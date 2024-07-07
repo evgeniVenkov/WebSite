@@ -1,0 +1,23 @@
+{% extends 'layout.html'%}
+
+{%block main%}
+<h1>Hello</h1>
+
+<div class="tasks">
+    {% for el in tasks %}
+    <div class="task">
+        <h3>{{el.title}}</h3>
+        {% if el.image %}
+        <img src="{{ el.image.url }}" alt="{{el.title}}">
+        {% else %}
+        <img src="/pictures/tasks_Image/default.jpg" alt="">
+        {% endif%}
+
+        <a href="{{el.urls}}"> Перейти в час с командой</a>
+
+    </div>
+    {%endfor%}
+
+</div>
+
+{%endblock%}

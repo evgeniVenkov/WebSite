@@ -1,16 +1,16 @@
-{% extends 'layout.html' %}
-
-{% block main %}
-  <div class="form-section">
-    <h2>Регистрация на сайта</h2>
-    <form method="POST">
-      {% csrf_token %}
-      {{ form }}
-      <button type="submit" class="btn btn-outline-warning">Зарегистрироваться</button>
-    </form>
-    <hr>
-    Уже зарегистрированы? <a href="{% url 'user' %}">Войти в личный кабинет</a>
-  </div>
+{% extends 'layout.html' %} {% block main %}
+<div class="form-section task">
+	<h2>Регистрация на сайте</h2>
+	<form method="POST">
+		{% csrf_token %}
+		<div class="form-group">{{ form }}</div>
+		<button type="submit" class="btn btn-outline-warning">
+			Зарегистрироваться
+		</button>
+	</form>
+	<hr />
+	<p>
+		Уже зарегистрированы? <a href="{% url 'user' %}">Войти в личный кабинет</a>
+	</p>
+</div>
 {% endblock main %}
-
-

@@ -1,49 +1,136 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+	margin: 0;
+	padding: 0;
 }
-body{
-
-}
-
-img{
-    float: left;
-    height: 100px;
-}
-nav{
-    display: block;
-    margin-top: 20px;
+body {
 }
 
-nav a{
-
-    color: black;
-    text-decoration: none;
-    border: 3px solid black;
-    padding: 3px;
-}
-.container{
-    width: 1258px;
-    margin: 0px auto;
+.form-section {
+	max-width: 400px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-header.container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
+.form-section h2 {
+	margin-bottom: 20px;
+	font-size: 24px;
+	text-align: center;
 }
 
-header .logo{
-    color:green;
-    font-size: 50px;
-    font-weight: bold;
+.form-group {
+	margin-bottom: 15px;
 }
-.task{
-    background: aqua;
+
+.form-group label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
 }
-.butExit
-{
-    margin-left:100px;
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+	border-color: #007bff;
+	outline: none;
+}
+
+button {
+	width: 100%;
+	padding: 10px;
+	background-color: #ffc107;
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+button:hover {
+	background-color: #e0a800;
+}
+
+hr {
+	margin: 20px 0;
+	border: 0;
+	border-top: 1px solid #ccc;
+}
+
+p {
+	text-align: center;
+	font-size: 14px;
+}
+
+a {
+	color: #007bff;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+img {
+	float: left;
+	height: 100px;
+}
+nav {
+	display: block;
+	margin-top: 20px;
+}
+
+nav a {
+	color: black;
+	text-decoration: none;
+	border: 3px solid black;
+	padding: 3px;
+}
+.container {
+	width: 1258px;
+	margin: 0px auto;
+}
+
+header.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+header .logo {
+	color: green;
+	font-size: 50px;
+	font-weight: bold;
+}
+.task {
+	background: aqua;
+}
+.butExit {
+	margin-left: 100px;
+}
+
+.button {
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 19px;
+	text-align: center;
+	text-decoration: none;
+	background-color: green;
+	color: white;
+	border: 2px solid black;
+	border-radius: 5px;
 }

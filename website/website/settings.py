@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-#+u+h%q%ss+^u+)iw1m7tp6x747nd$n7im!+93f$jbhev$_*c&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["178.159.43.103"]
 
 
 # Application definition
@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "tasks",
-    "home"
+    "home",
+    "user.apps.UserConfig",
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'user'
+LOGIN_REDIRECT_URL = 'home'

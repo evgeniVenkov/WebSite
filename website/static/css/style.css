@@ -1,4 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+
+}
 
 img{
-    height: 200px;
+    float: left;
+    height: 100px;
+}
+nav{
+    display: block;
+    margin-top: 20px;
+}
+
+nav a{
+
+    color: black;
+    text-decoration: none;
+    border: 3px solid black;
+    padding: 3px;
+}
+.container{
+    width: 1258px;
+    margin: 0px auto;
+}
+
+header.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+header .logo{
+    color:green;
+    font-size: 50px;
+    font-weight: bold;
+}
+.task{
+    background: aqua;
 }

@@ -7,10 +7,9 @@ TYPE_ACCOUNT = (
     ('free', 'Бесплатный пакет')
 )
 
-
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    img = models.ImageField(default='default.png', upload_to='user_images')
+    img = models.ImageField(default='user_images/default_us.png', upload_to='user_images')
     account_type = models.CharField(choices=TYPE_ACCOUNT, default='free', max_length=30)
 
     def __str__(self):

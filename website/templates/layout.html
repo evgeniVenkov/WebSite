@@ -24,7 +24,19 @@
     <footer>
     <nav >
         <a href="{% url 'home'%}">Главная</a>
+
+        {% if user.is_authenticated %}
+        <a href="{% url 'profile' %}">Профиль</a>
         <a href="{% url 'tasks' %}">задачи</a>
+
+        <form action="{% url 'exit' %}" method="post" >
+            {% csrf_token %}
+         <button type="submit" class="butExit">Выйти</button>
+        </form>
+        {%else%}
+        <a href="{% url 'user' %}">Войти</a>
+        <a href="{% url 'reg' %}">Регистрация</a>
+        {% endif%}
     </nav>
 </footer>
 </div>

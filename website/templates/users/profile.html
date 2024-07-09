@@ -1,22 +1,24 @@
-{% extends 'layout.html' %}
+{% extends 'layout.html' %} {% block main %}
+<div class="profile-section">
+	<div class="user-info">
+		<img
+			class="user-avatar"
+			src="{{ user.profile.img.url }}"
+			alt="User Image"
+		/>
+		<div class="user-details">
+			<h2>{{ user.username }}</h2>
+			<p><strong>Email:</strong> {{ user.email }}</p>
+		</div>
+	</div>
 
-{% block main %}
-  <div class="form-section">
-    <h2>Кабинет пользователя</h2>
-    <div class="media text-muted pt-3">
-      <img class="mr-2 rounded" style="width: 64px; height: 64px;" src="{{ user.profile.img.url }}">
-      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <strong class="d-block text-gray-dark">@{{ user.username }}</strong>
-        <b>Email:</b> {{ user.email }}
-      </p>
-    </div>
-    <h3 class="mt-4">Изменить данные про пользователя</h3>
-    <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ update_user }}
-      {{ img_profile }}
-      <button type="submit" class="btn btn-outline-warning">Обновить данные</button>
-    </form>
-  </div>
-{% endblock main %}
+	<h3 class="section-title">Изменить данные пользователя</h3>
 
+	<form method="POST" enctype="multipart/form-data" class="user-form">
+		{% csrf_token %}
+		<div class="form-group">{{ update_user }}</div>
+		<div class="form-group">{{ img_profile }}</div>
+		<button type="submit" class="btn btn-primary">Обновить данные</button>
+	</form>
+</div>
+{% endblock %}

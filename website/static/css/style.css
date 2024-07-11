@@ -84,7 +84,7 @@ a:hover {
 }
 
 img {
-	float: left;
+
 	height: 100px;
 }
 nav {
@@ -117,7 +117,7 @@ header .logo {
 	font-weight: bold;
 }
 .task {
-	background: aqua;
+
 }
 .butExit {
 	margin-left: 100px;

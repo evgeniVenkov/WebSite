@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 class Tasks(models.Model):
     slug = models.SlugField("уникальное название", unique=True)
@@ -10,3 +12,6 @@ class Tasks(models.Model):
 
     def __str__(self):
         return self.slug
+
+    def get_absolute_url(self):
+        return reverse('task',kwargs={'slug':self.slug})

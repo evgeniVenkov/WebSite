@@ -1,7 +1,6 @@
 {% extends 'layout.html'%}
 
 {%block main%}
-<h1>Hello</h1>
 
 <div class="tasks">
     {% for el in tasks %}
@@ -12,9 +11,9 @@
         {% else %}
         <img src="/pictures/tasks_Image/default.jpg" alt="">
         {% endif%}
-        <p>{{el.desk}}</p>
+        <p>{{el.desk|truncatechars:100}}</p>
 
-        <a href="{{el.url}}"> Перейти в час с командой</a>
+        <a href="{{el.get_absolute_url}}"> Подроднее</a>
 
     </div>
      <br><br>

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .models import Tasks
 
@@ -14,3 +14,8 @@ class Tasks_Page(ListView):
         ctx = super(Tasks_Page, self).get_context_data(**kwargs)
         ctx['title'] = 'Страница с задачами'
         return ctx
+
+
+class TaskPage (DetailView):
+    model = Tasks
+    template_name = 'tasks/taskPage.html'

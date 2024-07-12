@@ -2,18 +2,18 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 
-TYPE_ACCOUNT = (
-    ('full', 'Полный пакет'),
-    ('free', 'Бесплатный пакет')
-)
+TYPE_ACCOUNT = (("full", "Полный пакет"), ("free", "Бесплатный пакет"))
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    img = models.ImageField(default='user_images/default_us.png', upload_to='user_images')
-    account_type = models.CharField(choices=TYPE_ACCOUNT, default='free', max_length=30)
+    img = models.ImageField(
+        default="user_images/default_us.png", upload_to="user_images"
+    )
+    account_type = models.CharField(choices=TYPE_ACCOUNT, default="free", max_length=30)
 
     def __str__(self):
-        return f'Профайл пользователя {self.user.username}'
+        return f"Профайл пользователя {self.user.username}"
 
     def save(self, *args, **kwargs):
         super().save()

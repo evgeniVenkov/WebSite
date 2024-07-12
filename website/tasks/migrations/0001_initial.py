@@ -7,19 +7,39 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Tasks',
+            name="Tasks",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', models.SlugField(unique=True, verbose_name='уникальное название')),
-                ('title', models.CharField(max_length=100, verbose_name='Название задачи')),
-                ('desk', models.TextField(verbose_name='Описание задачи')),
-                ('url', models.CharField(max_length=130, verbose_name='ссылка на чат')),
-                ('image', models.ImageField(default='default.png', upload_to='tasks_Image', verbose_name='Картинка')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "slug",
+                    models.SlugField(unique=True, verbose_name="уникальное название"),
+                ),
+                (
+                    "title",
+                    models.CharField(max_length=100, verbose_name="Название задачи"),
+                ),
+                ("desk", models.TextField(verbose_name="Описание задачи")),
+                ("url", models.CharField(max_length=130, verbose_name="ссылка на чат")),
+                (
+                    "image",
+                    models.ImageField(
+                        default="default.png",
+                        upload_to="tasks_Image",
+                        verbose_name="Картинка",
+                    ),
+                ),
             ],
         ),
     ]

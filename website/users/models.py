@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+from tasks.models import Tasks
 
 TYPE_ACCOUNT = (("full", "Полный пакет"), ("free", "Бесплатный пакет"))
 
@@ -24,3 +25,13 @@ class Profile(models.Model):
             resize = (256, 256)
             image.thumbnail(resize)
             image.save(self.img.path)
+
+
+
+class Message(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField("")
+    task = models.ForeignKey(Tasks, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user)

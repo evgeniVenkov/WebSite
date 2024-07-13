@@ -1,20 +1,34 @@
 {% extends 'layout.html'%} {%block main%}
 
-<div class="tasks">
-	{% for el in tasks %}
-	<div class="task">
-		<h3>{{el.title}}</h3>
-		{% if el.image %}
-		<img src="{{ el.image.url }}" alt="{{el.title}}" />
+<div class="container">
+	<div>
+		<h3>{{object.title}}</h3>
+		{% if object.image %}
+		<img src="{{ object.image.url }}" alt="{{object.title}}" />
 		{% else %}
 		<img src="/pictures/tasks_Image/default.jpg" alt="" />
 		{% endif%}
-		<p>{{el.desk|truncatechars:100}}</p>
+		<p>{{object.desk}}</p>
 
-		<a href="{{el.get_absolute_url}}"> Подроднее</a>
+		<a href="{{object.url}}"> Перейти в час с командой</a>
 	</div>
-	<br /><br />
-	{%endfor%}
+
+	{% if user.is_authenticated %}
+	<form action="">
+		{% for el in allmessage %}
+		<div class="message">
+			<p>{{el.user}}</p>
+			<div>{{el.message}}</div>
+		</div>
+		{% endfor%}
+	</form>
+
+	<form action="" method="post" class="formMessage">
+		{{messageform}} {% csrf_token%}
+		<button>отправить</button>
+	</form>
+
+	{%endif%}
 </div>
 
 {%endblock%}

@@ -1,0 +1,20 @@
+from django.views.generic import ListView, DetailView
+
+from .models import Tasks
+
+
+class TasksPage(ListView):
+    model = Tasks
+    template_name = "tasks/tasks_page.html"
+    context_object_name = "tasks"
+    ordering = ["-id"]
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        ctx = super(TasksPage, self).get_context_data(**kwargs)
+        ctx["title"] = "Страница с задачами"
+        return ctx
+
+
+class TaskPage(DetailView):
+    model = Tasks
+    template_name = "tasks/taskPage.html"

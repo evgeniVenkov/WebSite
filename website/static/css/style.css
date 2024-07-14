@@ -1,0 +1,277 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	margin: 0;
+	padding: 0;
+	background: url('/static/images/myimage.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+header {
+	background: #333;
+	color: #fff;
+	padding: 10px 0;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.form-section {
+	max-width: 400px;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-section h2 {
+	margin-bottom: 20px;
+	font-size: 24px;
+	text-align: center;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+.form-group label {
+	font-size: 14px;
+	color: #333;
+	margin-bottom: 5px;
+	display: block;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+	width: 100%;
+	padding: 10px;
+	font-size: 14px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+	border-color: #007bff;
+	outline: none;
+}
+
+button {
+	width: 100%;
+	padding: 10px;
+	background-color: #ffc107;
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+button:hover {
+	background-color: #e0a800;
+}
+
+hr {
+	margin: 20px 0;
+	border: 0;
+	border-top: 1px solid #ccc;
+}
+
+p {
+	text-align: center;
+	font-size: 14px;
+}
+
+a {
+	color: #007bff;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+img {
+	height: 100px;
+}
+nav {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin: 20px 0;
+}
+
+nav a {
+	color: black;
+	text-decoration: none;
+	border: 3px solid black;
+	padding: 3px;
+}
+.container {
+	width: 80%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+header.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+header .logo {
+	color: green;
+	font-size: 50px;
+	font-weight: bold;
+}
+.task {
+}
+
+.mainbtn {
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 14px;
+	font-weight: 600;
+	color: #ffffff;
+	background-color: #2c974b;
+	border: 1px solid #2c974b;
+	border-radius: 6px;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.mainbtn:hover {
+	background-color: #24843a;
+}
+
+.mainbtn:active {
+	background-color: #1a5a2b;
+}
+
+.mainbtn:focus {
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(46, 164, 79, 0.4);
+}
+
+.btn-auth {
+	color: white;
+	background-color: #ffc107;
+	border: 1px solid #ffc107;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.btn-auth:hover,
+.btn-auth:focus {
+	background-color: white;
+	color: #ffc107;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-auth:active {
+	transform: scale(0.95);
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.main-content {
+	background: #fff;
+	padding: 20px;
+	margin-top: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+	color: #333;
+}
+
+p {
+	color: #666;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+ul li {
+	background: #e4e4e4;
+	margin: 5px 0;
+	padding: 10px;
+	border-left: 5px solid #3498db;
+}
+
+ul li strong {
+	color: #3498db;
+}
+
+footer {
+	text-align: center;
+	padding: 20px 0;
+	background: #333;
+	color: #fff;
+	margin-top: 20px;
+}
+
+.profile-section {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #f9f9f9;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.user-info {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+.user-avatar {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	margin-right: 20px;
+	object-fit: cover;
+	border: 2px solid #ddd;
+}
+.user-details h2 {
+	margin: 0;
+	font-size: 24px;
+	color: #333;
+}
+.user-details p {
+	margin: 5px 0 0;
+	font-size: 16px;
+	color: #666;
+}
+
+.section-title {
+	font-size: 20px;
+	color: #333;
+	margin-bottom: 10px;
+	border-bottom: 2px solid #ddd;
+	padding-bottom: 5px;
+}
+
+.user-form {
+	display: flex;
+	flex-direction: column;
+}

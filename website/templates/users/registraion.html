@@ -1,0 +1,24 @@
+{% extends 'layout.html' %} {% block main %}
+<div class="form-section">
+	<h2>Регистрация на сайте</h2>
+	<form method="POST">
+		{% csrf_token %} {% if form.non_field_errors %}
+		<div class="alert alert-danger">
+			{% for error in form.non_field_errors %}
+			<p>{{ error }}</p>
+			{% endfor %}
+		</div>
+		{% endif %}
+		<div class="form-group">
+			{{ form.as_p }} {% for field in form %} {% if field.errors %}
+			<div class="alert alert-danger">{{ field.errors }}</div>
+			{% endif %} {% endfor %}
+		</div>
+		<button type="submit" class="btn-auth">Зарегистрироваться</button>
+	</form>
+	<hr />
+	<p>
+		Уже зарегистрированы? <a href="{% url 'user' %}">Войти в личный кабинет</a>
+	</p>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+		/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+		<title>{{ title }}</title>
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<span class="logo"> P&C</span>
+			</header>
+
+			{% block main %} {% endblock %}
+
+			<footer>
+				<nav>
+					<a href="{% url 'home' %}" class="mainbtn">Главная</a>
+
+					{% if user.is_authenticated %}
+					<a href="{% url 'profile' %}" class="mainbtn">Профиль</a>
+					<a href="{% url 'tasks' %}" class="mainbtn">Задачи</a>
+
+					<form action="{% url 'exit' %}" method="post">
+						{% csrf_token %}
+						<button type="submit" class="btn-auth">Выйти</button>
+					</form>
+					{% else %} {% if request.path != '/users/' %}
+					<a href="{% url 'user' %}" class="mainbtn">Войти</a>
+					{% endif %}
+					<a href="{% url 'reg' %}" class="mainbtn">Регистрация</a>
+					{% endif %}
+				</nav>
+			</footer>
+		</div>
+	</body>
+</html>

@@ -228,6 +228,24 @@ ul li strong {
 	color: #3498db;
 }
 
+ul li.erorr {
+	background: #f4f4f4;
+	border-left: 5px solid #e74c3c;
+	padding: 10px;
+	margin: 5px 0;
+}
+
+ul li.erorr strong {
+	color: #e74c3c;
+}
+
+ul.error-list li.erorr ul li.erorr {
+	background: #f4f4f4;
+	border-left: none;
+	padding: 5px;
+	margin: 0;
+	color: #000000;
+}
 footer {
 	text-align: center;
 	padding: 20px 0;

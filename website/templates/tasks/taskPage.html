@@ -16,6 +16,23 @@
         <a href="{{object.url}}"> Перейти в час с командой</a>
     </div>
 
+    {% if user.is_authenticated %}
+        <form action="">
+            {% for el in allmessage %}
+            <div class="message">
+                <p>{{el.user}}</p>
+                <div>{{el.message}}</div>
+            </div>
+            {% endfor%}
+        </form>
+
+        <form action="" method="post" class="formMessage">
+            {{messageform}}
+            {% csrf_token%}
+            <button>отправить</button>
+        </form>
+
+    {%endif%}
 
 
 

@@ -3,16 +3,26 @@
 	<h2>Регистрация на сайте</h2>
 	<form method="POST">
 		{% csrf_token %} {% if form.non_field_errors %}
-		<div class="alert alert-danger">
+		<ul class="error-list">
 			{% for error in form.non_field_errors %}
-			<p>{{ error }}</p>
+			<li class="erorr"><strong>Ошибка:</strong> {{ error }}</li>
 			{% endfor %}
-		</div>
+		</ul>
 		{% endif %}
 		<div class="form-group">
-			{{ form.as_p }} {% for field in form %} {% if field.errors %}
-			<div class="alert alert-danger">{{ field.errors }}</div>
-			{% endif %} {% endfor %}
+			{{ form.as_p }}
+			<ul class="error-list">
+				{% for field in form %} {% if field.errors %}
+				<li class="erorr">
+					<strong>Ошибка в поле {{ field.label }}:</strong>
+					<ul>
+						{% for error in field.errors %}
+						<li class="erorr">{{ error }}</li>
+						{% endfor %}
+					</ul>
+				</li>
+				{% endif %} {% endfor %}
+			</ul>
 		</div>
 		<button type="submit" class="btn-auth">Зарегистрироваться</button>
 	</form>

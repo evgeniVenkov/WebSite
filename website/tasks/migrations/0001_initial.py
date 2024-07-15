@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
                 (
                     "image",
                     models.ImageField(
-                        default="default.png",
+                        default="default.jpg",
                         upload_to="tasks_Image",
                         verbose_name="Картинка",
                     ),

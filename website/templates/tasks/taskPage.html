@@ -1,25 +1,40 @@
-{% extends 'layout.html'%}
+{% extends 'layout.html' %} {% block main %}
 
-{%block main%}
+<div class="container chat-container">
+	<div class="chat-header">
+		<h3>{{ object.title }}</h3>
+		{% if object.image %}
+		<img
+			src="{{ object.image.url }}"
+			alt="{{ object.title }}"
+			class="chat-image"
+		/>
+		{% else %}
+		<img
+			src="/pictures/tasks_Image/default.jpg"
+			alt="default image"
+			class="chat-image"
+		/>
+		{% endif %}
+		<p>{{ object.desk }}</p>
+		<a href="{{ object.url }}" class="chat-link">Перейти в чат с командой</a>
+	</div>
 
+	{% if user.is_authenticated %}
+	<div class="messages">
+		{% for el in allmessage %}
+		<div class="message">
+			<p class="message-user">{{ el.user }}</p>
+			<div class="message-content">{{ el.message }}</div>
+		</div>
+		{% endfor %}
+	</div>
 
-<div class="container">
-    <div>
-        <h3>{{object.title}}</h3>
-        {% if object.image %}
-        <img src="{{ object.image.url }}" alt="{{object.title}}">
-        {% else %}
-        <img src="/pictures/tasks_Image/default.jpg" alt="">
-        {% endif%}
-        <p>{{object.desk}}</p>
-
-        <a href="{{object.url}}"> Перейти в час с командой</a>
-    </div>
-
-
-
-
-
+	<form action="" method="post" class="formMessage">
+		{{ messageform.as_p|safe }} {% csrf_token %}
+		<button class="btn-auth">Отправить</button>
+	</form>
+	{% endif %}
 </div>
 
-{%endblock%}
+{% endblock %}

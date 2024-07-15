@@ -34,8 +34,13 @@ class MessageForm(forms.ModelForm):
 
     class Meta:
         model = Message
-        fields = ["message","user","task"]
-        widgets = {'user': forms.HiddenInput(),
-                   'task': forms.HiddenInput(),
-                   'message': forms.Textarea(attrs={'placeholder': 'текст сообщения'})}
+        fields = ["message", "user", "task"]
+        widgets = {
+            'user': forms.HiddenInput(),
+            'task': forms.HiddenInput(),
+            'message': forms.Textarea(attrs={
+                'class': 'chat-input',
+                'placeholder': 'Введите сообщение...'
+            })
+        }
 

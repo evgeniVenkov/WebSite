@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
@@ -16,3 +17,13 @@ class Tasks(models.Model):
 
     def get_absolute_url(self):
         return reverse("task", kwargs={"slug": self.slug})
+
+
+
+class PropTasks(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    title = models.CharField("Название задачи", max_length=100)
+    desc = models.TextField("Описание задачи")
+
+    def __str__(self):
+        return self.title

@@ -1,0 +1,12 @@
+{% extends 'layout.html' %} {% block main %}
+
+
+{% if user.is_authenticated %}
+<form action="" method="post">
+    {{form.as_p}} {% csrf_token %}
+    <button>Отпраивть</button>
+</form>
+
+{%endif%}
+
+{% endblock %}

@@ -15,16 +15,12 @@
 	<body>
 		<div class="container">
 			<header>
-				<span class="logo"> P&C</span>
+				<span class="logo"> CodeMates</span>
 			</header>
 
-			{% if messages%}
-			{% for mess in messages %}
-			 <div class="">{{mess}}</div>
-			{%endfor%}
-
-		{%endif%}
-			{% block main %} {% endblock %}
+			{% if messages%} {% for mess in messages %}
+			<div class="">{{mess}}</div>
+			{%endfor%} {%endif%} {% block main %} {% endblock %}
 
 			<footer>
 				<nav>

@@ -1,12 +1,10 @@
 {% extends 'layout.html' %} {% block main %}
-
-
-{% if user.is_authenticated %}
-<form action="" method="post">
-    {{form.as_p}} {% csrf_token %}
-    <button>Отпраивть</button>
-</form>
-
-{%endif%}
-
-{% endblock %}
+<div class="profile-section">
+	{% if user.is_authenticated %}
+	<form action="" method="post" class="formMessage">
+		{{ form.as_p }} {% csrf_token %}
+		<button class="btn-auth">Отправить</button>
+	</form>
+	{% endif %}
+</div>
+{% endblock %} с

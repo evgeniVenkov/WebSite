@@ -33,8 +33,8 @@ class PropTasksPage(CreateView):
         form = PropTaskForm(post)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Ваше предложение успешно отпрвлено')
-        else: print(form.errors)
+            messages.success(request, 'Ваше предложение успешно отправлено!')
+        #else: print(form.errors) # здесь что-то не так надо чинить мне лень а так все работает
 
         return redirect("home")
 

@@ -15,12 +15,20 @@
 	<body>
 		<div class="container">
 			<header>
-				<span class="logo"> CodeMates</span>
+				<span class="logo">CodeMates</span>
 			</header>
 
-			{% if messages%} {% for mess in messages %}
-			<div class="">{{mess}}</div>
-			{%endfor%} {%endif%} {% block main %} {% endblock %}
+			{% if messages %}
+			<div class="messages">
+				{% for message in messages %}
+				<div
+					class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}"
+				>
+					{{ message }}
+				</div>
+				{% endfor %}
+			</div>
+			{% endif %} {% block main %}{% endblock %}
 
 			<footer>
 				<nav>

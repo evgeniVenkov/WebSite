@@ -1,7 +1,21 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserOurRegistraion, ProfileImage, UserUpdateForm
+from django.views.generic import ListView
+
+class allUsers(ListView):
+    model = User
+    template_name = "users/allUsers.html"
+    context_object_name = "users"
+    ordering = ['id']
+
+    def get_context_data(self, **kwargs):
+        ctx = super(allUsers, self).get_context_data(**kwargs)
+
+        ctx['title'] = "Все пользователи"
+        return ctx
 
 
 def register(request):

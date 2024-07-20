@@ -1,5 +1,6 @@
 {% extends 'layout.html' %} {% block main %}
 <div class="tasks">
+
 	{% for el in tasks %}
 	<div class="task">
 		<h3>{{ el.title }}</h3>
@@ -15,5 +16,6 @@
 		</div>
 	</div>
 	{% endfor %}
+
 </div>
 {% endblock %}

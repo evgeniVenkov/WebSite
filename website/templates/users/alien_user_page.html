@@ -1,8 +1,11 @@
-{% extends 'layout.html' %}
-{% block main %}
-
-<h1>dsfdfsd</h1>
-
-
-
-{% endblock main%}
+{% extends 'layout.html' %} {% block main %}
+<div class="profile-container">
+	<h1 class="profile-title">Профиль пользователя {{ object.username }}</h1>
+	<img
+		src="{{ object.profile.img.url }}"
+		alt="Profile Image"
+		class="profile-img-large"
+	/>
+	<p class="profile-email">Email: {{ object.email }}</p>
+</div>
+{% endblock %}

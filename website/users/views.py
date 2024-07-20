@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserOurRegistraion, ProfileImage, UserUpdateForm
-from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 class UserDetailView(DetailView):
     model = User
@@ -11,19 +11,20 @@ class UserDetailView(DetailView):
     slug_url_kwarg = 'username'
     template_name = 'users/alien_user_page.html'
 
+    def get_object(self):
+        username = self.kwargs.get("username")
+        return get_object_or_404(User, username=username)
 
-class allUsers(ListView):
+class AllUsers(ListView):
     model = User
     template_name = "users/allUsers.html"
     context_object_name = "users"
     ordering = ['id']
 
     def get_context_data(self, **kwargs):
-        ctx = super(allUsers, self).get_context_data(**kwargs)
-
+        ctx = super(AllUsers, self).get_context_data(**kwargs)
         ctx['title'] = "Все пользователи"
         return ctx
-
 
 def register(request):
     if request.method == "POST":
@@ -40,10 +41,9 @@ def register(request):
         form = UserOurRegistraion()
     return render(
         request,
-        "users/registraion.html",
+        "users/registration.html",
         {"form": form, "title": "Регистрация пользователя"},
     )
-
 
 @login_required
 def profile(request):

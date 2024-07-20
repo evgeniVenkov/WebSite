@@ -3,7 +3,14 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserOurRegistraion, ProfileImage, UserUpdateForm
-from django.views.generic import ListView
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
+
+class UserDetailView(DetailView):
+    model = User
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
+    template_name = 'users/alien_user_page.html'
+
 
 class allUsers(ListView):
     model = User

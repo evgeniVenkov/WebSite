@@ -3,7 +3,8 @@ from . import views as userViews
 from django.contrib.auth import views as authViews
 
 urlpatterns = [
-    path("all", userViews.allUsers.as_view(), name="allUsers"),
+    path('<username>/', userViews.UserDetailView.as_view(), name='user_detail'),
+    path("all/", userViews.allUsers.as_view(), name="allUsers"),
     path("reg/", userViews.register, name="reg"),
     path("profile/", userViews.profile, name="profile"),
     path("", authViews.LoginView.as_view(template_name="users/user.html"), name="user"),

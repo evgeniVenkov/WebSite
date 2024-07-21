@@ -1,0 +1,18 @@
+{% extends 'layout.html' %} {% block main %}
+<h1 class="page-title">Все пользователи</h1>
+<div class="user-list">
+	{% for el in users %}
+	<div class="user-card">
+		<img
+			src="{{ el.profile.img.url }}"
+			alt="Profile Image"
+			class="profile-img"
+		/>
+		<div class="user-info">
+			<p class="username">{{ el.username }}</p>
+			<a href="{% url 'user_detail' el.username %}" class="mainbtn">Профиль</a>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}

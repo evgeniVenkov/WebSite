@@ -9,15 +9,21 @@
 		/>
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>{{ title }}</title>
-		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<!-- Default theme -->
+		<link id="theme-link" rel="stylesheet" href="{% static 'css/dark.css' %}" />
 		<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
 		<script defer src="{% static 'js/rainEffect.js' %}"></script>
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 	</head>
 	<body>
 		<div id="particles-js"></div>
 		<div class="container">
 			<header>
 				<span class="logo">CodeMates</span>
+				<label class="switch">
+					<input type="checkbox" id="theme-toggle" />
+					<span class="slider round"></span>
+				</label>
 			</header>
 
 			{% if messages %}
@@ -52,5 +58,24 @@
 				</nav>
 			</footer>
 		</div>
+		<script>
+			const toggleCheckbox = document.getElementById('theme-toggle');
+			const themeLink = document.getElementById('theme-link');
+
+			toggleCheckbox.addEventListener('change', () => {
+			    if (toggleCheckbox.checked) {
+			        themeLink.href = '{% static 'css/dark.css' %}';
+			        localStorage.setItem('theme', 'dark');
+			    } else {
+			        themeLink.href = '{% static 'css/light.css' %}';
+			        localStorage.setItem('theme', 'light');
+			    }
+			});
+
+			// Load the saved theme
+			const savedTheme = localStorage.getItem('theme') || 'dark';
+			themeLink.href = savedTheme === 'dark' ? '{% static 'css/dark.css' %}' : '{% static 'css/light.css' %}';
+			toggleCheckbox.checked = savedTheme === 'dark';
+		</script>
 	</body>
 </html>

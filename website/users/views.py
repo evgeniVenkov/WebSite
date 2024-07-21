@@ -11,9 +11,9 @@ class UserDetailView(DetailView):
     slug_url_kwarg = 'username'
     template_name = 'users/alien_user_page.html'
 
-    def get_object(self):
-        username = self.kwargs.get("username")
-        return get_object_or_404(User, username=username)
+    #def get_object(self):    # 
+    #    username = self.kwargs.get("username")
+    #    return get_object_or_404(User, username=username)
 
 class AllUsers(ListView):
     model = User

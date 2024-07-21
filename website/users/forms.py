@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Profile,Message
+from .models import Profile
 
 
 
@@ -30,17 +30,5 @@ class ProfileImage(forms.ModelForm):
         model = Profile
         fields = ["img"]
 
-class MessageForm(forms.ModelForm):
 
-    class Meta:
-        model = Message
-        fields = ["message", "user", "task"]
-        widgets = {
-            'user': forms.HiddenInput(),
-            'task': forms.HiddenInput(),
-            'message': forms.Textarea(attrs={
-                'class': 'chat-input',
-                'placeholder': 'Введите сообщение...'
-            })
-        }
 

@@ -1,9 +1,11 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserOurRegistraion, ProfileImage, UserUpdateForm
+from .forms import UserOurRegistraion, ProfileImage, UserUpdateForm,MessUserForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from .models import messUser
 
 class UserDetailView(DetailView):
     model = User
@@ -11,9 +13,31 @@ class UserDetailView(DetailView):
     slug_url_kwarg = 'username'
     template_name = 'users/alien_user_page.html'
 
-    #def get_object(self):    # 
-    #    username = self.kwargs.get("username")
-    #    return get_object_or_404(User, username=username)
+    def get_context_data(self, **kwargs):
+        ctx = super(UserDetailView, self).get_context_data(**kwargs)
+        sender = User.objects.get(username=self.request.user.username)
+        recipient  = User.objects.get(username=self.kwargs['username'])
+        ctx['title'] = f'страница пользователя {self.kwargs['username']}'
+        ctx['MessageUserForm'] = MessUserForm
+        mess = messUser.objects.filter(
+            Q(sender = sender,recipient = recipient) | Q(recipient = sender,sender = recipient)
+
+        )
+        ctx['MessageUser'] = mess.order_by('id')
+        return ctx
+    def post(self, request, *args, **kwargs):
+        post = request.POST.copy()
+        sender = User.objects.get(username=self.request.user.username)
+        recipient = User.objects.get(username=self.kwargs['username'])
+        post['sender'] = sender
+        post['recipient'] = recipient
+        request.POST = post
+
+        form = MessUserForm(post)
+        if form.is_valid():
+            form.save()
+
+        return redirect('/users/' + self.kwargs['username'])
 
 class AllUsers(ListView):
     model = User

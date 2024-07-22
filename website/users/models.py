@@ -27,3 +27,10 @@ class Profile(models.Model):
             image.save(self.img.path)
 
 
+class messUser(models.Model):
+    sender = models.ForeignKey(User, on_delete=models.PROTECT,related_name="sender")
+    recipient = models.ForeignKey(User, on_delete=models.PROTECT)
+    message = models.TextField()
+
+    def __str__(self):
+        return str(self.sender)

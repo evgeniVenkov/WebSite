@@ -8,4 +8,23 @@
 	/>
 	<p class="profile-email">Email: {{ object.email }}</p>
 </div>
+
+{% if user.is_authenticated %}
+
+<div>
+	{% for el in MessageUser %}
+	<p>{{el.sender}}</p>
+	<p>{{el.message}}</p>
+
+	{% endfor %}
+</div>
+
+<form action="" method="post">
+	{{MessageUserForm.as_p}}
+	{% csrf_token %}
+	<button class = "btn-auth">Oтправить</button>
+
+</form>
+
+{% endif %}
 {% endblock %}

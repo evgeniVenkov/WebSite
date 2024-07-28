@@ -1,10 +1,15 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from PIL import Image
-from tasks.models import Tasks
+
 
 TYPE_ACCOUNT = (("full", "Полный пакет"), ("free", "Бесплатный пакет"))
 
+class CustomUser(AbstractUser):
+    friends = models.ManyToManyField('self', through='FriendRequest', symmetrical=False,related_name='friends')
+
+    def __str__(self):
+        return self.username
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -27,10 +32,10 @@ class Profile(models.Model):
             image.save(self.img.path)
 
 
-class Message(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    message = models.TextField("")
-    task = models.ForeignKey(Tasks, on_delete=models.CASCADE)
+class messUser(models.Model):
+    sender = models.ForeignKey(User, on_delete=models.PROTECT,related_name="sender")
+    recipient = models.ForeignKey(User, on_delete=models.PROTECT)
+    message = models.TextField()
 
     def __str__(self):
-        return str(self.user)
+        return str(self.sender)

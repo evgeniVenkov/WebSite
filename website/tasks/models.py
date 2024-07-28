@@ -27,3 +27,11 @@ class PropTasks(models.Model):
 
     def __str__(self):
         return self.title
+
+class MessageTask(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField("")
+    task = models.ForeignKey(Tasks, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user)

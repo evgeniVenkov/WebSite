@@ -1,9 +1,8 @@
 from django.shortcuts import redirect
 from django.views.generic import ListView, DetailView,CreateView
-from .models import Tasks, PropTasks
-from.forms import PropTaskForm
-from users.models import Message
-from users.forms import MessageForm
+from .models import Tasks, PropTasks,MessageTask
+from.forms import PropTaskForm,MessageTaskForm
+
 from django.contrib import messages
 
 class TasksPage(ListView):
@@ -50,8 +49,8 @@ class TaskPage(DetailView):
         task = Tasks.objects.filter(slug=self.kwargs['slug']).first()
 
         ctx["title"] = task.title
-        ctx["allmessage"] = Message.objects.filter(task=task)
-        ctx['messageform'] = MessageForm
+        ctx["allmessage"] = MessageTask.objects.filter(task=task)
+        ctx['messageform'] = MessageTaskForm
         return ctx
 
     def post(self, request, *args, **kwargs):
@@ -62,7 +61,7 @@ class TaskPage(DetailView):
         post['user'] = request.user
         request.POST = post
 
-        form = MessageForm(post)
+        form = MessageTaskForm(post)
         if form.is_valid():
             form.save()
 
